@@ -103,6 +103,7 @@ const data = [
 
   Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
 
+  
   Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
 
   Step 3: return the entire component.
@@ -112,3 +113,73 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+// function create_article(title, date, firstParagraph, secondParagraph, thirdParagraph){
+  function create_article(dataitem){
+
+// -----Create elements-----
+
+// const article = document.createElement("div");
+// const art_title = document.createElement("h2");
+// const art_dateP = document.createElement("p");
+// const art_firstP = document.createElement("p");
+// const art_secondP = document.createElement("p");
+// const art_thirdP = document.createElement("p");
+// const art_button = document.createElement("span");
+
+const newarticle = document.createElement("div");
+const newarticle_title = document.createElement("h2");
+const newarticle_date = document.createElement("p");
+const newarticle_para1 = document.createElement("p");
+const newarticle_para2 = document.createElement("p");
+const newarticle_para3 = document.createElement("p");
+const newarticle_btn = document.createElement("span");
+
+//------Add classes-----------
+
+newarticle.classList.add('article');
+newarticle_date.classList.add("date");
+// art_firstP.classList.add("");
+// art_secondP.classList.add("");
+// art_thirdP.classList.add("");
+newarticle_btn.classList.add("expandButton");
+
+
+
+//-------Append elements to their parents------
+
+newarticle.append(newarticle_title);
+newarticle.append(newarticle_date);
+newarticle.append(newarticle_para1);
+newarticle.append(newarticle_para2);
+newarticle.append(newarticle_para3);
+newarticle.append(newarticle_btn)
+
+//-------Add textContent-----------
+
+newarticle_title.textContent = title;
+// art_firstP.textContent = date;
+newarticle_date.textContent = date;
+newarticle_para1.textContent = firstParagraph;
+newarticle_para2.textContent = secondParagraph;
+newarticle_para3.textContent = thirdParagraph;
+newarticle_btn.textContent = Expand;
+
+//add event listener on button
+
+art_button.addEventListener('click', event => {
+  article.classList.toggle('article-open')
+
+
+
+})
+
+  return article;
+}
+
+const articles = document.querySelector(".articles");
+data.foreach(item=>{
+  articles.append(createComponents(item.title,item.date,item.firstParagraph,item.secondParagraph,item.thirdParagraph))
+
+})
+
