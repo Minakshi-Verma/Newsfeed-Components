@@ -85,6 +85,18 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+
+  {
+    title: 'testing the article',
+    date: 'Jan 15th, 2020',
+    firstParagraph: `Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding!? `,
+
+    secondParagraph: `Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding!? `,
+
+
+    thirdParagraph:`Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding!? `
+
   }
 ];
 
@@ -114,18 +126,12 @@ const data = [
 
 */
 
-// function create_article(title, date, firstParagraph, secondParagraph, thirdParagraph){
-  function create_article(dataitem){
+
+
+
+  function create_article(data){
 
 // -----Create elements-----
-
-// const article = document.createElement("div");
-// const art_title = document.createElement("h2");
-// const art_dateP = document.createElement("p");
-// const art_firstP = document.createElement("p");
-// const art_secondP = document.createElement("p");
-// const art_thirdP = document.createElement("p");
-// const art_button = document.createElement("span");
 
 const newarticle = document.createElement("div");
 const newarticle_title = document.createElement("h2");
@@ -139,9 +145,6 @@ const newarticle_btn = document.createElement("span");
 
 newarticle.classList.add('article');
 newarticle_date.classList.add("date");
-// art_firstP.classList.add("");
-// art_secondP.classList.add("");
-// art_thirdP.classList.add("");
 newarticle_btn.classList.add("expandButton");
 
 
@@ -157,29 +160,43 @@ newarticle.append(newarticle_btn)
 
 //-------Add textContent-----------
 
-newarticle_title.textContent = title;
-// art_firstP.textContent = date;
-newarticle_date.textContent = date;
-newarticle_para1.textContent = firstParagraph;
-newarticle_para2.textContent = secondParagraph;
-newarticle_para3.textContent = thirdParagraph;
-newarticle_btn.textContent = Expand;
+newarticle_title.textContent = data.title;
+newarticle_date.textContent = data.date;
+newarticle_para1.textContent = data.firstParagraph;
+newarticle_para2.textContent = data.secondParagraph;
+newarticle_para3.textContent = data.thirdParagraph;
+newarticle_btn.textContent = "EXPAND";
 
 //add event listener on button
 
-art_button.addEventListener('click', event => {
-  article.classList.toggle('article-open')
+newarticle_btn.addEventListener('click', e => {
+  newarticle.classList.toggle('article-open')
 
-
+  //----stretch task------
+  
+  newarticle_btn.style.transform = "scale(1.6)";
+  newarticle_btn.style.trasition ="0.4s"
+  newarticle_btn.style.color= "black"
+  newarticle_btn.style.backgroundColor= "beige"
 
 })
 
-  return article;
+newarticle.addEventListener("click", e =>{
+  newarticle.style.backgroundColor ="pink"
+})
+
+  return newarticle;
 }
+//---------stretch task-----
+
+//---using .forEach to create several articles from the data-file-----
 
 const articles = document.querySelector(".articles");
-data.foreach(item=>{
-  articles.append(createComponents(item.title,item.date,item.firstParagraph,item.secondParagraph,item.thirdParagraph))
+data.forEach(item=>{
+  articles.append(create_article(item))
 
 })
+
+
+
 
