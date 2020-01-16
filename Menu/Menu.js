@@ -33,3 +33,74 @@ let menuItems = [
   Step 6: add the menu component to the DOM.
   
 */
+ 
+function create_menu(array){
+
+//---create elements---div/ul/lis
+const menu = document.createElement("div");
+const un_list = document.createElement("ul");
+
+//---add classnames-----
+menu.classList.add("menu")
+
+//---appendchild------
+
+menu.append(un_list)
+
+//----create/append/add textContent to lis---
+
+array.forEach(item=>{
+const lis = document.createElement("li")
+un_list.append(lis);
+lis.textContent = item
+})
+
+
+
+//----add eventListener to the menu_button---
+
+const menu_button = document.querySelector(".menu-button")
+
+menu_button.addEventListener("click", e =>{
+menu.classList.toggle("menu--open")
+
+})
+
+//stretch-----
+
+un_list.addEventListener("mouseover" ,e=>{
+un_list.style.color = "yellow";
+un_list.style.backgroundColor ="black"
+
+})
+un_list.addEventListener("mouseover" ,e=>{
+un_list.style.color = "pink";
+un_list.style.backgroundColor ="black"
+
+})
+
+un_list.addEventListener("mouseleave" ,e=>{
+un_list.style.color = "black";
+un_list.style.backgroundColor ="pink"
+
+})
+
+// ---------stretch task------
+return menu
+
+}
+
+const header = document.querySelector(".header");
+ header.append(create_menu(menuItems));
+
+
+
+
+
+
+
+
+
+
+
+

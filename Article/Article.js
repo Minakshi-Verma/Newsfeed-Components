@@ -85,6 +85,18 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+
+  {
+    title: 'testing the article',
+    date: 'Jan 15th, 2020',
+    firstParagraph: `Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding!? `,
+
+    secondParagraph: `Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding!? `,
+
+
+    thirdParagraph:`Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding! Ding dong ding!? `
+
   }
 ];
 
@@ -103,6 +115,7 @@ const data = [
 
   Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
 
+  
   Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
 
   Step 3: return the entire component.
@@ -112,3 +125,78 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+
+
+
+  function create_article(data){
+
+// -----Create elements-----
+
+const newarticle = document.createElement("div");
+const newarticle_title = document.createElement("h2");
+const newarticle_date = document.createElement("p");
+const newarticle_para1 = document.createElement("p");
+const newarticle_para2 = document.createElement("p");
+const newarticle_para3 = document.createElement("p");
+const newarticle_btn = document.createElement("span");
+
+//------Add classes-----------
+
+newarticle.classList.add('article');
+newarticle_date.classList.add("date");
+newarticle_btn.classList.add("expandButton");
+
+
+
+//-------Append elements to their parents------
+
+newarticle.append(newarticle_title);
+newarticle.append(newarticle_date);
+newarticle.append(newarticle_para1);
+newarticle.append(newarticle_para2);
+newarticle.append(newarticle_para3);
+newarticle.append(newarticle_btn)
+
+//-------Add textContent-----------
+
+newarticle_title.textContent = data.title;
+newarticle_date.textContent = data.date;
+newarticle_para1.textContent = data.firstParagraph;
+newarticle_para2.textContent = data.secondParagraph;
+newarticle_para3.textContent = data.thirdParagraph;
+newarticle_btn.textContent = "EXPAND";
+
+//add event listener on button
+
+newarticle_btn.addEventListener('click', e => {
+  newarticle.classList.toggle('article-open')
+
+  //----stretch task------
+  
+  newarticle_btn.style.transform = "scale(1.6)";
+  newarticle_btn.style.trasition ="0.4s"
+  newarticle_btn.style.color= "black"
+  newarticle_btn.style.backgroundColor= "beige"
+
+})
+
+newarticle.addEventListener("click", e =>{
+  newarticle.style.backgroundColor ="pink"
+})
+
+  return newarticle;
+}
+//---------stretch task-----
+
+//---using .forEach to create several articles from the data-file-----
+
+const articles = document.querySelector(".articles");
+data.forEach(item=>{
+  articles.append(create_article(item))
+
+})
+
+
+
+
