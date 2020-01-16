@@ -66,7 +66,7 @@ menu.classList.toggle("menu--open")
 
 })
 
-//stretch------
+//stretch-----
 
 un_list.addEventListener("mouseover" ,e=>{
 un_list.style.color = "yellow";
